@@ -1,1 +1,0 @@
-# Sneaker Shop E-Commerce website.
