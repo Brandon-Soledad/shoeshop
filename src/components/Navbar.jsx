@@ -7,7 +7,7 @@ import styled from 'styled-components'
 
 const Container = styled.div`
     height: 80px;
-    
+    background-color: black;
 `;
 const Wrapper = styled.div`
     padding: 10px 20px;
@@ -24,11 +24,12 @@ const Left = styled.div`
 
 const Language = styled.span`
     font-size: 14px;
+    color: white;
     cursor: pointer;
 `;
 
 const SearchContainer = styled.div`
-    border: 0.5px solid lightgray;
+    border: 0.5px solid gray;
     display: flex;
     align-items: center;
     margin-left: 25px;
@@ -46,6 +47,7 @@ const Center = styled.div`
 
 const Logo = styled.h1`
     font-weight: bold;
+    color: white;
 `;
 
 const Right = styled.div`
@@ -57,6 +59,8 @@ const Right = styled.div`
 
 const MenuItem = styled.div`
     font-size: 14px;
+    font-weight: bold;
+    color: white;
     cursor: pointer;
     margin-left: 25px;
 `;
@@ -69,7 +73,7 @@ export default function Navbar() {
                     <Language>EN</Language>
                     <SearchContainer>
                         <Input/>
-                        <Search style={{color:"black", fontSize:17}}/>
+                        <Search style={{color:"white", fontSize:17}}/>
                     </SearchContainer>
                 </Left>
                 <Center><Logo>SNEAKER VAULT.</Logo></Center>

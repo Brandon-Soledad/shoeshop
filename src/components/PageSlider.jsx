@@ -1,13 +1,15 @@
 import { KeyboardArrowLeftOutlined, KeyboardArrowRightOutlined } from '@material-ui/icons'
 import React from 'react'
 import styled from 'styled-components'
-import vuittonNike from './ShoeImages/vuittonNike.jpg';
+import { useState } from 'react'
+import { sliderItems } from '../data'
 
 const Container = styled.div`
     width: 100%;
     height: 100vh;
     display: flex;
     position: relative;
+    overflow: hidden;
 `;
 
 const SliderArrow = styled.div`
@@ -24,12 +26,15 @@ const SliderArrow = styled.div`
     left: ${props=> props.direction === "left" && "10px"};
     right: ${props=> props.direction === "right" && "10px"};
     margin: auto;
+    cursor: pointer;
     opacity: 0.5;
+    z-index: 2;
 `;
 
 const Wrapper = styled.div`
     height: 100%;
     display: flex;
+    transform: translateX(${props => props.slideIndex * -100}vw);
 `;
 
 const Slide = styled.div`
@@ -37,6 +42,7 @@ const Slide = styled.div`
     height: 100vh;
     display: flex;
     align-items: center;
+    background-color: #${props=>props.bg};
 `;
 
 const ImgContainer = styled.div`
@@ -46,8 +52,6 @@ const ImgContainer = styled.div`
 
 const Image = styled.img`
     height: 73%;
-    width: 600px;
-    height: 600px;
 `;
 
 const InfoContainer = styled.div`
@@ -73,34 +77,34 @@ const Button = styled.button`
 `;
 
 export default function PageSlider() {
+    const [slideIndex, setSlideIndex] = useState(0);
+    const handleClick = (direction) =>{
+        if(direction ==="left") {
+            setSlideIndex(slideIndex > 0 ? slideIndex-1: 2)
+        } else {
+            setSlideIndex(slideIndex < 2 ? slideIndex+1: 0)
+        }
+    };
     return (
         <Container>
-            <SliderArrow direction="left">
+            <SliderArrow direction="left" onClick={() => handleClick("left")}>
                 <KeyboardArrowLeftOutlined/>
             </SliderArrow>
-            <Wrapper>
-                <Slide>
+            <Wrapper slideIndex={slideIndex}>
+                {sliderItems.map((item) => ( 
+                <Slide bg={item.bg} key={item.id}>
                     <ImgContainer>
-                        <Image src={vuittonNike} />
+                        <Image src={item.img} width="600px" height="600px"/>
                     </ImgContainer>
                     <InfoContainer>
-                        <Title>Sneaker Sale</Title>
-                        <Description>Get all Adidas shoes 20% off!</Description>
-                        <Button>Show Now</Button>
+                        <Title>{item.title}</Title>
+                        <Description>{item.desc}</Description>
+                        <Button>SHOW NOW</Button>
                     </InfoContainer>
                 </Slide>
-                <Slide>
-                    <ImgContainer>
-                        <Image src={vuittonNike} />
-                    </ImgContainer>
-                    <InfoContainer>
-                        <Title>Sneaker Sale</Title>
-                        <Description>Get all Adidas shoes 20% off!</Description>
-                        <Button>Show Now</Button>
-                    </InfoContainer>
-                </Slide>
+                ))}
             </Wrapper>
-            <SliderArrow direction="right">
+            <SliderArrow direction="right" onClick={() => handleClick("right")}>
                 <KeyboardArrowRightOutlined/>
             </SliderArrow>
         </Container>

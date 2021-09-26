@@ -3,13 +3,13 @@ import styled from 'styled-components';
 
 const Container = styled.div`
     height: 30px;
-    background-color: black;
-    color: white;
+    background-color: #a1dee0;
+    color: black;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: bold;
 `
 
 export default function Announcement() {

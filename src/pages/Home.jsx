@@ -6,8 +6,8 @@ import PageSlider from '../components/PageSlider'
 export default function Home() {
     return (
         <div className="container">
-            <Announcement/>
             <Navbar/>
+            <Announcement/>
             <PageSlider/>
         </div>
     )
