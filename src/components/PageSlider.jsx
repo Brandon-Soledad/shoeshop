@@ -64,15 +64,16 @@ const Title = styled.h1`
 
 const Description = styled.p`
     margin: 50px 0px ;
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 30px;
+    font-weight: bold;
     letter-spacing: 3px;
+    color: white;
 `;
 
 const Button = styled.button`
-    padding: 5px;
+    padding: 5px black;
     font-size: 20px;
-    background: transparent;
+    background: white;
     cursor: pointer;
 `;
 
@@ -94,7 +95,7 @@ export default function PageSlider() {
                 {sliderItems.map((item) => ( 
                 <Slide bg={item.bg} key={item.id}>
                     <ImgContainer>
-                        <Image src={item.img} width="600px" height="600px"/>
+                        <Image src={item.img}/>
                     </ImgContainer>
                     <InfoContainer>
                         <Title>{item.title}</Title>

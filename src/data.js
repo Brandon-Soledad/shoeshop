@@ -1,4 +1,5 @@
 import vuittonNike from './components/ShoeImages/vuittonNike.jpg'
+import redNike from './components/ShoeImages/redNike.jpeg'
 export const sliderItems = [
     {
       id: 1,
@@ -9,14 +10,14 @@ export const sliderItems = [
     },
     {
       id: 2,
-      img: vuittonNike,
+      img: redNike,
       title: "Sneaker Sale Fall",
-      desc: "Get all Puma shoes 20% off!",
-      bg: "fcf1ed",
+      desc: "Get all Nike shoes 20% off!",
+      bg: "ff0000",
     },
     {
       id: 3,
-      img: vuittonNike,
+      img: "https://cdn.shopify.com/s/files/1/0267/3737/7324/products/PG.WNMIYA9-LBL01.RZ_2000x.jpg?v=1627050630",
       title: "Sneaker Sale Winter",
       desc: "Get all Nike shoes 20% off!",
       bg: "fbf0f4",

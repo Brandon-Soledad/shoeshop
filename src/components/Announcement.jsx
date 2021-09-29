@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
     height: 30px;
-    background-color: #a1dee0;
+    background-color: white;
     color: black;
     display: flex;
     align-items: center;
@@ -15,7 +15,7 @@ const Container = styled.div`
 export default function Announcement() {
     return (
         <Container>
-            50% off Nike!
+            New shipment of Bred 4's has arrived!
         </Container>
     )
 }
