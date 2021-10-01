@@ -67,13 +67,13 @@ const Description = styled.p`
     font-size: 30px;
     font-weight: bold;
     letter-spacing: 3px;
-    color: white;
+    color: black;
 `;
 
 const Button = styled.button`
     padding: 5px black;
     font-size: 20px;
-    background: white;
+    background: transparent;
     cursor: pointer;
 `;
 

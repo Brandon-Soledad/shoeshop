@@ -1,25 +1,26 @@
-import vuittonNike from './components/ShoeImages/vuittonNike.jpg'
-import redNike from './components/ShoeImages/redNike.jpeg'
+import supremeNike from './components/ShoeImages/supremeNike.jpg'
+import retroLightning from './components/ShoeImages/retroLightning.jpg'
+import yeezyZebra from './components/ShoeImages/yeezyZebra.jpg';
 export const sliderItems = [
     {
       id: 1,
-      img: vuittonNike,
+      img: retroLightning,
       title: "Sneaker Sale Summer",
-      desc: "Get all Adidas shoes 20% off!",
-      bg: "f5fafd",
+      desc: "Get all Jordan shoes 20% off!",
+      bg: "ffffff",
     },
     {
       id: 2,
-      img: redNike,
+      img: supremeNike,
       title: "Sneaker Sale Fall",
       desc: "Get all Nike shoes 20% off!",
-      bg: "ff0000",
+      bg: "ffffff",
     },
     {
       id: 3,
-      img: "https://cdn.shopify.com/s/files/1/0267/3737/7324/products/PG.WNMIYA9-LBL01.RZ_2000x.jpg?v=1627050630",
+      img: yeezyZebra,
       title: "Sneaker Sale Winter",
-      desc: "Get all Nike shoes 20% off!",
-      bg: "fbf0f4",
+      desc: "Get all Adidas shoes 20% off!",
+      bg: "ffffff",
     },
   ];
