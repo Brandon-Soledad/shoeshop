@@ -15,7 +15,7 @@ const Container = styled.div`
 const SliderArrow = styled.div`
     width: 50px;
     height: 50px;
-    background-color: white;
+    background-color: lightgrey;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -27,13 +27,13 @@ const SliderArrow = styled.div`
     right: ${props=> props.direction === "right" && "10px"};
     margin: auto;
     cursor: pointer;
-    opacity: 0.5;
-    z-index: 2;
+    z-index: 1;
 `;
 
 const Wrapper = styled.div`
     height: 100%;
     display: flex;
+    transition: all 1.0s ease;
     transform: translateX(${props => props.slideIndex * -100}vw);
 `;
 
@@ -56,6 +56,7 @@ const Image = styled.img`
 
 const InfoContainer = styled.div`
     flex: 1;
+    padding: 50px;
 `;
 
 const Title = styled.h1`
