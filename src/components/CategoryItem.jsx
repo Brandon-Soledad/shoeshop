@@ -14,6 +14,13 @@ const Info = styled.div`
     justify-content: center;
     flex-direction: column;
 `
+
+const Image = styled.img`
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+`
+
 const Container = styled.div`
     flex: 1;
     margin: 3px;
@@ -22,12 +29,11 @@ const Container = styled.div`
     &:hover ${Info}{
         opacity: 1;
     }
-`
 
-const Image = styled.img`
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    
+    &:hover ${Image}{
+        opacity: 0.3;
+    }
 `
 
 const Title = styled.h1`
