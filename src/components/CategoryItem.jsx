@@ -1,3 +1,4 @@
+import { ShoppingBagOutlined } from '@mui/icons-material';
 import React from 'react'
 import styled from 'styled-components';
 
@@ -36,28 +37,41 @@ const Container = styled.div`
     }
 `
 
-const Title = styled.h1`
-    color:white;
-    margin-bottom: 20px;
+const Circle = styled.div`
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
 `
 
-const Button = styled.button`
-    border: 5px single black;
-    padding: 10px;
+const Icon = styled.div`
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
     background-color: white;
-    color:gray;
-    cursor: pointer;
-    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    transition: all 0.5s ease;
+    &:hover {
+        background-color: #e9f5f5;
+        transform: scale(1.1);
+    }
 `
 
 const CategoryItem = ({item}) => {
     return (
         <Container>
+            <Circle>
             <Image src={item.img} />
             <Info>
-                <Title>{item.title}</Title>
-                <Button>SHOP NOW</Button>
+                <Icon>
+                    <ShoppingBagOutlined/>
+                </Icon>
             </Info>
+            </Circle>
         </Container>
     )
 }

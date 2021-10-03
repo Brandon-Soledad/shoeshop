@@ -88,4 +88,20 @@ export const products = [
     id: 14,
     img: universityBlue4,
   },
+  {
+    id: 15,
+    img: lightning4,
+  },
+  {
+    id: 16,
+    img: universityBlue4,
+  },
+  {
+    id: 17,
+    img: lightning4,
+  },
+  {
+    id: 18,
+    img: universityBlue4,
+  },
 ];
