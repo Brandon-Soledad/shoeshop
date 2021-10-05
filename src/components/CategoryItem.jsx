@@ -13,6 +13,7 @@ const Info = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 2;
     flex-direction: column;
 `
 
@@ -20,6 +21,7 @@ const Image = styled.img`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: all 0.5s ease;
 `
 
 const Container = styled.div`
@@ -28,7 +30,8 @@ const Container = styled.div`
     height: 70vh;
     position: relative;
     &:hover ${Info}{
-        opacity: 1;
+        transform: scale(1.1);
+        opacity: 1
     }
 
     
@@ -49,12 +52,13 @@ const Icon = styled.div`
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background-color: white;
+    background-color: lightgray;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 10px;
     transition: all 0.5s ease;
+    cursor: pointer;
     &:hover {
         background-color: #e9f5f5;
         transform: scale(1.1);
