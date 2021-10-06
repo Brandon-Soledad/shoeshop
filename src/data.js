@@ -10,8 +10,12 @@ import airMax2090 from './components/ShoeImages/airMax2090.jpg'
 import blazerMid from './components/ShoeImages/blazerMid.png'
 import michigan12 from './components/ShoeImages/michigan12.png'
 import carmine6 from './components/ShoeImages/carmine6.png'
-import lightning4 from './components/ShoeImages/lightning4.png'
-import universityBlue4 from './components/ShoeImages/universityBlue4.png'
+import dunkLowRed from './components/ShoeImages/dunkLowRed.png'
+import lemonade from './components/ShoeImages/lemonade.png'
+import shimmerJ from './components/ShoeImages/shimmerJ.png'
+import travisScott from './components/ShoeImages/travisScott.png'
+import yeezySlide from './components/ShoeImages/yeezySlide.png'
+import waveRunner from './components/ShoeImages/waveRunner.png';
 
 export const sliderItems = [
     {
@@ -82,26 +86,26 @@ export const products = [
   },
   {
     id: 13,
-    img: lightning4,
+    img: lemonade,
   },
   {
     id: 14,
-    img: universityBlue4,
+    img: shimmerJ,
   },
   {
     id: 15,
-    img: lightning4,
+    img: dunkLowRed,
   },
   {
     id: 16,
-    img: universityBlue4,
+    img: travisScott,
   },
   {
     id: 17,
-    img: lightning4,
+    img: yeezySlide,
   },
   {
     id: 18,
-    img: universityBlue4,
+    img: waveRunner,
   },
 ];
