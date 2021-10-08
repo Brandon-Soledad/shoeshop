@@ -72,9 +72,11 @@ const Description = styled.p`
 `;
 
 const Button = styled.button`
-    padding: 5px black;
-    font-size: 20px;
-    background: transparent;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    background: red;
     cursor: pointer;
 `;
 
