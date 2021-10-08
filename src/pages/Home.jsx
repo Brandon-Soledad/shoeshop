@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar'
 import PageSlider from '../components/PageSlider';
 import Products from '../components/Products';
 import Newsletter from '../components/Newsletter';
+import Footer from '../components/Footer';
 
 export default function Home() {
     return (
@@ -15,6 +16,7 @@ export default function Home() {
             <Categories/>
             <Products/>
             <Newsletter/>
+            <Footer/>
         </div>
     )
 }

@@ -43,6 +43,7 @@ const Button = styled.button`
   background-color: red;
   color: white;
   font-weight: bold;
+  cursor: pointer;
 `;
 
 export default function Newsletter() {
