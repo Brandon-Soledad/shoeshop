@@ -1,7 +1,7 @@
 import { ShoppingBagOutlined } from '@mui/icons-material';
 import React from 'react'
 import styled from 'styled-components';
-
+import { mobile } from "../mobileUI";
 
 const Info = styled.div`
     opacity: 0;
@@ -22,6 +22,7 @@ const Image = styled.img`
     height: 100%;
     object-fit: cover;
     transition: all 0.5s ease;
+    ${mobile({ height: "20vh" })}
 `
 
 const Container = styled.div`

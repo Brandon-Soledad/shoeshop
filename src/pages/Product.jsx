@@ -5,7 +5,8 @@ import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
-import lemonade from "../components/ShoeImages/lemonade.png"
+import { mobile } from "../mobileUI";
+// import lemonade from "../components/ShoeImages/lemonade.png"
 
 
 const Container = styled.div``;
@@ -13,7 +14,7 @@ const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
-
+  ${mobile({ padding: "10px", flexDirection:"column" })}
 `;
 
 const ImgContainer = styled.div`
@@ -23,13 +24,13 @@ const ImgContainer = styled.div`
 const Image = styled.img`
   height: 100%;
   object-fit: cover;
-
+  ${mobile({ height: "40vh" })}
 `;
 
 const InfoContainer = styled.div`
   flex: 1;
   padding: 0px 50px;
- 
+  ${mobile({ padding: "10px" })}
 `;
 
 const Title = styled.h1`
@@ -50,7 +51,7 @@ const FilterContainer = styled.div`
   margin: 30px 0px;
   display: flex;
   justify-content: space-between;
-
+  ${mobile({ width: "100%" })}
 `;
 
 const Filter = styled.div`
@@ -63,14 +64,14 @@ const FilterTitle = styled.span`
   font-weight: 200;
 `;
 
-const FilterColor = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: ${(props) => props.color};
-  margin: 0px 5px;
-  cursor: pointer;
-`;
+// const FilterColor = styled.div`
+//   width: 20px;
+//   height: 20px;
+//   border-radius: 50%;
+//   background-color: ${(props) => props.color};
+//   margin: 0px 5px;
+//   cursor: pointer;
+// `;
 
 const FilterSize = styled.select`
   margin-left: 10px;
@@ -84,7 +85,7 @@ const AddContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
- 
+  ${mobile({ width: "100%" })}
 `;
 
 const AmountContainer = styled.div`

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-
+import { mobile } from "../mobileUI";
 
 const Container = styled.div`
     width: 100vw;
@@ -22,7 +22,7 @@ const Wrapper = styled.div`
     padding: 20px;
     border-radius: 5px;
     background-color: black;
-
+    ${mobile({ width: "75%" })}
 `;
 
 const Title = styled.h1`
@@ -78,7 +78,7 @@ export default function Login() {
               <Input placeholder="password" />
               <Button>LOGIN</Button>
               <Link>FORGOT PASSWORD?</Link>
-              <Link>CREATE A NEW ACCOUNT</Link>
+              <Link>CREATE ACCOUNT</Link>
             </Form>
           </Wrapper>
         </Container>

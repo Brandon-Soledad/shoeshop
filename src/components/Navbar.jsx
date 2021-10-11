@@ -4,17 +4,19 @@ import { Badge } from '@mui/material';
 import React from 'react'
 import styled from 'styled-components'
 import sneakerLogo from './ShoeImages/sneakerLogo.jpeg';
-
+import { mobile } from "../mobileUI";
 
 const Container = styled.div`
     height: 100px;
     background-color: black;
+    ${mobile({ height: "50px" })}
 `;
 const Wrapper = styled.div`
     padding: 10px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    ${mobile({ padding: "10px 0px" })}
 `;
 
 const Left = styled.div`
@@ -28,6 +30,7 @@ const Language = styled.span`
     font-size: 17px;
     color: white;
     cursor: pointer;
+    ${mobile({ display: "none" })}
 `;
 
 const SearchContainer = styled.div`
@@ -40,6 +43,7 @@ const SearchContainer = styled.div`
 
 const Input = styled.input`
     border: none;
+    ${mobile({ width: "50px" })}
 `;
 
 const Center = styled.div`
@@ -52,6 +56,7 @@ const Logo = styled.img`
     border: black;
     width: 190px;
     height: 90px;
+    ${mobile({ fontSize: "24px" })}
 `;
 
 const Right = styled.div`
@@ -60,6 +65,7 @@ const Right = styled.div`
     text-align: center;
     justify-content: flex-end;
     font-weight: bold;
+    ${mobile({ flex: 2, justifyContent: "center" })}
 `;
 
 const MenuItem = styled.div`
@@ -68,6 +74,7 @@ const MenuItem = styled.div`
     color: white;
     cursor: pointer;
     margin-left: 25px;
+    ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 
 export default function Navbar() {
