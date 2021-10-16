@@ -1,16 +1,21 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const usersRoutes = require("./routes/users")
+dotenv.config();
 
-mongoose.connect(
-    "mongodb+srv://brandon:Pokemon8252@cluster0.lrsm3.mongodb.net/shoeshop?retryWrites=true&w=majority"
-
-    )
+mongoose
+    .connect(process.env.MONGO_URL)
     .then(()=> console.log("db connection successful"))
     .catch((err) => {
         console.log(err);
     });
 
-app.listen(5000, () => {
+    app.use(express.json());
+
+    app.use("/api/users", usersRoutes)
+
+app.listen(process.env.PORT || 5000, () => {
     console.log("Backend server is running!");
 })
