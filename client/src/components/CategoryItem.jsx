@@ -1,7 +1,8 @@
-import { ShoppingBagOutlined } from '@mui/icons-material';
+import { ShoppingBagOutlined } from '@mui/icons-material'
 import React from 'react'
-import styled from 'styled-components';
-import { mobile } from "../mobileUI";
+import styled from 'styled-components'
+import { mobile } from "../mobileUI"
+import { Link } from 'react-router-dom';
 
 const Info = styled.div`
     opacity: 0;
@@ -69,14 +70,16 @@ const Icon = styled.div`
 const CategoryItem = ({item}) => {
     return (
         <Container>
-            <Circle>
-            <Image src={item.img} />
-            <Info>
-                <Icon>
-                    <ShoppingBagOutlined/>
-                </Icon>
-            </Info>
-            </Circle>
+            <Link to={`/products/${item.cat}`}>
+                <Circle>
+                <Image src={item.img} />
+                <Info>
+                    <Icon>
+                        <ShoppingBagOutlined/>
+                    </Icon>
+                </Info>
+                </Circle>
+            </Link>
         </Container>
     )
 }

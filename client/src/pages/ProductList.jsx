@@ -6,6 +6,8 @@ import Products from "../components/Products";
 import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
 import { mobile } from "../mobileUI";
+import { useLocation } from 'react-router';
+import { useState } from 'react';
 
 const Container = styled.div``;
 
@@ -39,6 +41,19 @@ const Option = styled.option``;
 
 
 export default function ProductList() {
+    const location = useLocation();
+    const cat = location.pathname.split("/")[2]
+    const [filter, setFilters] = useState({})
+    const [sort, setSort] = useState("newest");
+
+    const handleFilters = (e) => {
+      const value = e.target.value;
+      setFilters({
+        ...filter,
+        [e.target.name]: value,
+      });
+    };
+    console.log(filter);
     return (
         <Container>
         <Navbar />
@@ -47,16 +62,16 @@ export default function ProductList() {
         <FilterContainer>
           <Filter>
             <FilterText>Filter Products:</FilterText>
-            <Select>
-              <Option disabled selected>
+            <Select name="brand" onChange={handleFilters}>
+              <Option disabled >
                 Brand
               </Option>
               <Option>Jordan</Option>
               <Option>Nike</Option>
               <Option>Adidas</Option>
             </Select>
-            <Select>
-              <Option disabled selected>
+            <Select name="size" onChange={handleFilters}>
+              <Option disabled >
                 Size
               </Option>
               <Option>3</Option>
@@ -73,14 +88,14 @@ export default function ProductList() {
           </Filter>
           <Filter>
             <FilterText>Sort Products:</FilterText>
-            <Select>
-              <Option selected>Newest</Option>
-              <Option>Price (Low to High)</Option>
-              <Option>Price (High to Low)</Option>
+            <Select onChange={(e) => setSort(e.target.value)}>
+              <Option value="newest">Newest</Option>
+              <Option value="lowtohigh">Price (Low to High)</Option>
+              <Option value="hightolow">Price (High to Low)</Option>
             </Select>
           </Filter>
         </FilterContainer>
-        <Products />
+        <Products cat={cat} filter={filter} sort={sort}/>
         <Newsletter />
         <Footer />
       </Container>

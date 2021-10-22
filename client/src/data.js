@@ -46,16 +46,19 @@ export const categories = [
     id: 4,
     img: jordanLogo,
     title: "",
+    cat: "jordan",
   },
   {
     id: 5,
     img: nikeLogo,
     title: "",
+    cat: "nike",
   },
   {
     id: 6,
     img: adidasLogo,
     title: "",
+    cat: "adidas",
   },
 ];
 
