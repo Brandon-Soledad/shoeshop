@@ -19,7 +19,7 @@ const verifyTokenAndAuthorization = (req, res, next) => {
         if (req.user.id === req.params.id || req.user.isAdmin) {
             next();
         } else {
-            res.status(403).json("Invalid Token");
+            res.status(403).json("You are not an admin");
         }
     });
 };
@@ -29,7 +29,7 @@ const verifyTokenAndAdmin = (req, res, next) => {
         if (req.user.isAdmin) {
             next();
         } else {
-            res.status(403).json("Invalid Token");
+            res.status(403).json("You are not an admin");
         }
     });
 };
