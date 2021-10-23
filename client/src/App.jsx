@@ -19,7 +19,7 @@ export default function App() {
           <ProductList/>
         </Route>
         <Route path="/product/:id">
-          <ProductList/>
+          <Product/>
         </Route>
         <Route path="/cart">
           <ShoppingCart/>

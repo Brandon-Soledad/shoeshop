@@ -62,7 +62,7 @@ export const categories = [
   },
 ];
 
-export const products = [
+export const shoeProducts = [
   {
     id: 7,
     img: michigan12,
