@@ -43,17 +43,16 @@ const Option = styled.option``;
 export default function ProductList() {
     const location = useLocation();
     const cat = location.pathname.split("/")[2];
-    const [filter, setFilters] = useState({});
+    const [filters, setFilters] = useState({});
     const [sort, setSort] = useState("popular");
 
     const handleFilters = (e) => {
       const value = e.target.value;
       setFilters({
-        ...filter,
+        ...filters,
         [e.target.name]: value,
       });
     };
-    console.log(filter);
     return (
         <Container>
         <Navbar />
@@ -66,9 +65,9 @@ export default function ProductList() {
               <Option disabled >
                 Brand
               </Option>
-              <Option>jordan</Option>
-              <Option>nike</Option>
-              <Option>adidas</Option>
+              <Option>Jordan</Option>
+              <Option>Nike</Option>
+              <Option>Adidas</Option>
             </Select>
             <Select name="size" onChange={handleFilters}>
               <Option disabled >
@@ -95,7 +94,7 @@ export default function ProductList() {
             </Select>
           </Filter>
         </FilterContainer>
-        <Products cat={cat} filter={filter} sort={sort}/>
+        <Products cat={cat} filters={filters} sort={sort}/>
         <Newsletter />
         <Footer />
       </Container>

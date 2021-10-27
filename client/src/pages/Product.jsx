@@ -111,9 +111,6 @@ const Button = styled.button`
   color: white;
   cursor: pointer;
   font-weight: bold;
-  &:hover{
-      background-color: #f8f4f4;
-  }
 `;
 
 

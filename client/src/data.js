@@ -69,7 +69,7 @@ export const shoeProducts = [
   },
   {
     id: 8,
-    img: carmine6,
+    img: "https://www.goat.com/sneakers/air-jordan-6-retro-og-carmine-2021-ct8529-106",
   },
   {
     id: 9,

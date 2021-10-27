@@ -11,54 +11,59 @@ const Container = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
 `
-export default function Products({cat, filter, sort}) {
-    console.log({cat,filter,sort});
+export default function Products({cat, filters, sort}) {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
-
-    useEffect(()=>{
-        const getProducts = async ()=>{
-            try{
-                const res = await axios.get("http://localhost:5000/api/products");
-                console.log(res);
-            }catch(err){}
-        };
-        getProducts()
-        
+    
+    useEffect(() => {
+      const getProducts = async () => {
+        try {
+          const res = await axios.get(
+            
+               "http://localhost:5000/api/products"
+          );
+          console.log(res);
+          setProducts(res.data);
+        } catch (err) {}
+      };
+      getProducts();
     }, [cat]);
-    // const [products, setProducts] = useState([]);
-    // const [filteredProducts, setFilteredProducts] = useState([]);
   
-    // useEffect(() => {
-    //   const getProducts = async () => {
-    //     try {
-    //       const res = await axios.get(
-    //         cat
-    //           ? `http://localhost:5000/api/products?category=${cat}`
-    //           : "http://localhost:5000/api/products"
-    //       );
-    //       setProducts(res.data);
-    //     } catch (err) {}
-    //   };
-    //   getProducts();
-    // }, [cat]);
-  
-    // useEffect(() => {
-    //   cat &&
-    //     setFilteredProducts(
-    //       products.filter((item) =>
-    //         Object.entries(filters).every(([key, value]) =>
-    //           item[key].includes(value)
-    //         )
-    //       )
-    //     );
-    // }, [products, cat, filters]);
+    useEffect(() => {
+      cat &&
+        setFilteredProducts(
+          products.filter((item) =>
+            Object.entries(filters).every(([key, value]) =>
+              item[key].includes(value)
+            )
+          )
+        );
+    }, [products, cat, filters]);
+
+    useEffect(() => {
+        if (sort === "popular") {
+          setFilteredProducts((prev) =>
+            [...prev].sort((a, b) => a.createdAt - b.createdAt)
+          );
+        } else if (sort === "Price (Low to High)") {
+          setFilteredProducts((prev) =>
+            [...prev].sort((a, b) => a.price - b.price)
+          );
+        } else {
+          setFilteredProducts((prev) =>
+            [...prev].sort((a, b) => b.price - a.price)
+          );
+        }
+        console.log(filteredProducts);
+      }, [sort]);
 
     return (
         <Container>
-            {shoeProducts.map((item)=>(
-                <Product item={item} key={item.id}/>
-            ))}
+           {cat
+        ? filteredProducts.map((item) => <Product item={item} key={item.id} />)
+        : products
+            .slice(0, 8)
+            .map((item) => <Product item={item} key={item.id} />)}
         </Container>
     )
 }
