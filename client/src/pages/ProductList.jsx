@@ -57,7 +57,7 @@ export default function ProductList() {
         <Container>
         <Navbar />
         <Announcement />
-        <Title>Sneakers</Title>
+        <Title>{cat}</Title>
         <FilterContainer>
           <Filter>
             <FilterText>Filter Products:</FilterText>

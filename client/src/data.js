@@ -9,7 +9,6 @@ import adidasSuperStarBlack from './components/ShoeImages/adidasSuperStarBlack.p
 import airMax2090 from './components/ShoeImages/airMax2090.jpg'
 import blazerMid from './components/ShoeImages/blazerMid.png'
 import michigan12 from './components/ShoeImages/michigan12.png'
-import carmine6 from './components/ShoeImages/carmine6.png'
 import dunkLowRed from './components/ShoeImages/dunkLowRed.png'
 import lemonade from './components/ShoeImages/lemonade.png'
 import shimmerJ from './components/ShoeImages/shimmerJ.png'

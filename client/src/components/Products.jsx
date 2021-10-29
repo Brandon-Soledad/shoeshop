@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { shoeProducts } from '../data'
 import Product from './Product'
 import { useEffect, useState } from 'react'
 import axios from 'axios';
@@ -11,6 +10,7 @@ const Container = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
 `
+
 export default function Products({cat, filters, sort}) {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
