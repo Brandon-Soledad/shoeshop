@@ -57,22 +57,18 @@ export default function ProductList() {
         <Container>
         <Navbar />
         <Announcement />
-        <Title>Sneakers</Title>
+        <Title>{cat}</Title>
         <FilterContainer>
           <Filter>
             <FilterText>Filter Products:</FilterText>
             <Select name="brand" onChange={handleFilters}>
-              <Option disabled >
-                Brand
-              </Option>
-              <Option>Jordan</Option>
-              <Option>Nike</Option>
-              <Option>Adidas</Option>
+              <Option disabled > Brand</Option>
+              <Option>jordan</Option>
+              <Option>nike</Option>
+              <Option>adidas</Option>
             </Select>
             <Select name="size" onChange={handleFilters}>
-              <Option disabled >
-                Size
-              </Option>
+              <Option disabled>Size</Option>
               <Option>3</Option>
               <Option>4</Option>
               <Option>5</Option>
