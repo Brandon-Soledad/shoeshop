@@ -67,15 +67,6 @@ const FilterTitle = styled.span`
     font-weight: 200;
 `;
 
-// const FilterColor = styled.div`
-//   width: 20px;
-//   height: 20px;
-//   border-radius: 50%;
-//   background-color: ${(props) => props.color};
-//   margin: 0px 5px;
-//   cursor: pointer;
-// `;
-
 const FilterSize = styled.select`
     margin-left: 10px;
     padding: 5px;
@@ -123,7 +114,6 @@ export default function Product() {
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState([]);
-  console.log(product.desc);
     useEffect(() => {
       const getProduct = async () => {
         try {
@@ -141,7 +131,6 @@ export default function Product() {
         setQuantity(quantity + 1);
       }
     };
-
     return (
       <Container>
       <Navbar />
@@ -158,7 +147,7 @@ export default function Product() {
             <Filter>
               <FilterTitle>Size</FilterTitle>
               <FilterSize>
-                {product.size.map((s) => (
+              {product.size && product.size.map((s) => (
                   <FilterSizeOption key={s}>{s}</FilterSizeOption>
                 ))}
               </FilterSize>
