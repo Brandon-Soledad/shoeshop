@@ -9,6 +9,8 @@ import { mobile } from "../mobileUI";
 import { useLocation} from 'react-router';
 import {publicRequest} from "../axiosRequests";
 import { useEffect, useState } from 'react';
+import { addProduct } from '../redux/cartRedux';
+import { useDispatch } from 'react-redux';
 
 
 const Container = styled.div`
@@ -114,6 +116,7 @@ export default function Product() {
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState([]);
+  const dispatch = useDispatch();
     useEffect(() => {
       const getProduct = async () => {
         try {
@@ -130,6 +133,15 @@ export default function Product() {
       } else {
         setQuantity(quantity + 1);
       }
+    };
+
+    const handleClick = () => {
+      dispatch(
+        addProduct({...product, quantity, size})
+        
+        
+        );
+  
     };
     return (
       <Container>
@@ -159,7 +171,7 @@ export default function Product() {
               <Amount>{quantity}</Amount>
               <Add onClick={() => handleQuantity("inc")} />
             </AmountContainer>
-            <Button>ADD TO CART</Button>
+            <Button onClick={handleClick}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

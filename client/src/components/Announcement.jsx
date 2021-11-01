@@ -8,14 +8,14 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
+    font-size: 17px;
     font-weight: bold;
 `
 
 export default function Announcement() {
     return (
         <Container>
-            New shipment of Bred 4's has arrived!
+            New shipment of Shoes has arrived!
         </Container>
     )
 }
