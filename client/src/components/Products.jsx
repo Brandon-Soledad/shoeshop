@@ -14,7 +14,7 @@ const Container = styled.div`
 export default function Products({cat, filters, sort}) {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
-    
+
     useEffect(() => {
       const getProducts = async () => {
         try {
@@ -29,7 +29,7 @@ export default function Products({cat, filters, sort}) {
       };
       getProducts();
     }, [cat]);
-  
+
     useEffect(() => {
       cat &&
         setFilteredProducts(
@@ -55,7 +55,6 @@ export default function Products({cat, filters, sort}) {
             [...prev].sort((a, b) => b.price - a.price)
           );
         }
-        console.log(filteredProducts);
       }, [sort]);
 
     return (

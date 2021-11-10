@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import sneakerLogo from './ShoeImages/sneakerLogo.jpeg';
 import { mobile } from "../mobileUI";
 import {useSelector} from "react-redux"
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
     height: 100px;
@@ -82,7 +83,7 @@ export default function Navbar() {
     const quantity = useSelector(state=>state.cart.quantity);
 
     return (
-        <Container> 
+        <Container>
             <Wrapper>
                 <Left>
                     <Language>EN</Language>
@@ -95,11 +96,13 @@ export default function Navbar() {
                 <Right>
                     <MenuItem>REGISTER</MenuItem>
                     <MenuItem>SIGN IN</MenuItem>
+                    <Link to="/carts">
                     <MenuItem>
                         <Badge badgeContent = {quantity} color = "primary">
                             <ShoppingCartOutlined/>
                         </Badge>
                     </MenuItem>
+                    </Link>
                 </Right>
             </Wrapper>
         </Container>

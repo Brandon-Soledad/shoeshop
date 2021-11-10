@@ -4,9 +4,13 @@ import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import shimmerJ from '../components/ShoeImages/shimmerJ.png'
-import travisScott from '../components/ShoeImages/travisScott.png'
+import {userRequest} from "../axiosRequests";
 import { mobile } from "../mobileUI";
+import { useHistory } from "react-router";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import StripeCheckout from "react-stripe-checkout"
+
 
 const Container = styled.div``;
 
@@ -82,12 +86,6 @@ const ProductName = styled.span``;
 
 const ProductId = styled.span``;
 
-// const ProductColor = styled.div`
-//   width: 20px;
-//   height: 20px;
-//   border-radius: 50%;
-//   background-color: ${(props) => props.color};
-// `;
 
 const ProductSize = styled.span``;
 
@@ -156,95 +154,108 @@ const Button = styled.button`
 `;
 
 export default function ShoppingCart() {
+    const cart = useSelector((state) => state.cart);
+    const [stripeToken, setStripeToken] = useState(null);
+    const history = useHistory();
+
+    const onToken = (token) => {
+        setStripeToken(token);
+    };
+
+    useEffect(() => {
+        const makeRequest = async () => {
+        try {
+            const res = await userRequest.post("/checkout/payment", {
+            tokenId: stripeToken.id,
+            amount: 500,
+            });
+            history.push("/success", {
+            stripeData: res.data,
+            products: cart, });
+        } catch {}
+        };
+        stripeToken && makeRequest();
+        // eslint-disable-next-line
+    }, [stripeToken, cart.total, history]);
     return (
-            <Container>
-            <Navbar />
-            <Announcement />
-            <Wrapper>
-            <Title>YOUR CART</Title>
-            <Top>
-                <TopButton>CONTINUE SHOPPING</TopButton>
-                <TopTexts>
-                <TopText>Cart Items (2)</TopText>
-                <TopText>Wishlist (0)</TopText>
-                </TopTexts>
-                <TopButton type="filled">CHECKOUT</TopButton>
-            </Top>
-            <Bottom>
-                <Info>
+        <Container>
+        <Navbar />
+        <Announcement />
+        <Wrapper>
+          <Title>CART</Title>
+          <Top>
+            <TopButton>CONTINUE SHOPPING</TopButton>
+            <TopTexts>
+              <TopText>Shopping Bag(2)</TopText>
+              <TopText>Your Wishlist (0)</TopText>
+            </TopTexts>
+            <TopButton type="filled">CHECKOUT NOW</TopButton>
+          </Top>
+          <Bottom>
+            <Info>
+              {cart.products.map((product) => (
                 <Product>
-                    <ProductDetail>
-                    <Image src={shimmerJ} />
+                  <ProductDetail>
+                    <Image src={product.img} />
                     <Details>
-                        <ProductName>
-                        <b>Product:</b> Jordan 4 WMNS Shimmer
-                        </ProductName>
-                        <ProductId>
-                        <b>ID:</b> 93813718293
-                        </ProductId>
-                        <ProductSize>
-                        <b>Size:</b> 12
-                        </ProductSize>
+                      <ProductName>
+                        <b>Product:</b> {product.title}
+                      </ProductName>
+                      <ProductId>
+                        <b>ID:</b> {product._id}
+                      </ProductId>
+                      <ProductSize>
+                        <b>Size:</b> {product.size}
+                      </ProductSize>
                     </Details>
-                    </ProductDetail>
-                    <PriceDetail>
+                  </ProductDetail>
+                  <PriceDetail>
                     <ProductAmountContainer>
-                        <Remove />
-                        <ProductAmount>2</ProductAmount>
-                        <Add />
+                      <Add />
+                      <ProductAmount>{product.quantity}</ProductAmount>
+                      <Remove />
                     </ProductAmountContainer>
-                    <ProductPrice>$ 400</ProductPrice>
-                    </PriceDetail>
+                    <ProductPrice>
+                      $ {product.price * product.quantity}
+                    </ProductPrice>
+                  </PriceDetail>
                 </Product>
-                <Hr />
-                <Product>
-                    <ProductDetail>
-                    <Image src={travisScott} />
-                    <Details>
-                        <ProductName>
-                        <b>Product:</b> Travis Scott x Fragment Low
-                        </ProductName>
-                        <ProductId>
-                        <b>ID:</b> 93813718293
-                        </ProductId>
-                        <ProductSize>
-                        <b>Size:</b> 12
-                        </ProductSize>
-                    </Details>
-                    </ProductDetail>
-                    <PriceDetail>
-                    <ProductAmountContainer>
-                        <Remove />
-                        <ProductAmount>1</ProductAmount>
-                        <Add />
-                    </ProductAmountContainer>
-                    <ProductPrice>$ 1500</ProductPrice>
-                    </PriceDetail>
-                </Product>
-                </Info>
-                <Summary>
-                <SummaryTitle>ORDER SUMMARY</SummaryTitle>
-                <SummaryItem>
-                    <SummaryItemText>Subtotal</SummaryItemText>
-                    <SummaryItemPrice>$ 1900</SummaryItemPrice>
-                </SummaryItem>
-                <SummaryItem>
-                    <SummaryItemText>Shipping</SummaryItemText>
-                    <SummaryItemPrice>$ 5.90</SummaryItemPrice>
-                </SummaryItem>
-                <SummaryItem>
-                    <SummaryItemText>Shipping Discount</SummaryItemText>
-                    <SummaryItemPrice>$ -5.90</SummaryItemPrice>
-                </SummaryItem>
-                <SummaryItem type="total">
-                    <SummaryItemText>Total</SummaryItemText>
-                    <SummaryItemPrice>$ 1900</SummaryItemPrice>
-                </SummaryItem>
-                <Button>CHECKOUT</Button>
-                </Summary>
-            </Bottom>
-            </Wrapper>
-            <Footer />
-        </Container>
+              ))}
+              <Hr />
+            </Info>
+            <Summary>
+              <SummaryTitle>ORDER SUMMARY</SummaryTitle>
+              <SummaryItem>
+                <SummaryItemText>Subtotal</SummaryItemText>
+                <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
+              </SummaryItem>
+              <SummaryItem>
+                <SummaryItemText>Estimated Shipping</SummaryItemText>
+                <SummaryItemPrice>$ 5.90</SummaryItemPrice>
+              </SummaryItem>
+              <SummaryItem>
+                <SummaryItemText>Shipping Discount</SummaryItemText>
+                <SummaryItemPrice>$ -5.90</SummaryItemPrice>
+              </SummaryItem>
+              <SummaryItem type="total">
+                <SummaryItemText>Total</SummaryItemText>
+                <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
+              </SummaryItem>
+              <StripeCheckout
+                name="SneakerAid"
+                billingAddress
+                shippingAddress
+                description={`Your total is $${cart.total}`}
+                amount={cart.total * 100}
+                token={onToken}
+                stripeKey="pk_test_51Ju3YWHOuog4jpqwatV0RXG9O7ticMcPtUTBvk5kUwNWIqs7vQPzyvH7lVdZfb34A6XpqSOZLXDsirg3fx0hqdVz00ZBAU283z"
+              >
+                <Button>CHECKOUT NOW</Button>
+              </StripeCheckout>
+            </Summary>
+          </Bottom>
+        </Wrapper>
+        <Footer />
+      </Container>
     )
 }

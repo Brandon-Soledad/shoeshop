@@ -123,7 +123,7 @@ export default function Product() {
           const res = await publicRequest.get("/products/find/" + id);
           setProduct(res.data);
         } catch(e) {}
-      } 
+      }
       getProduct();
     }, [id]);
 
@@ -138,10 +138,10 @@ export default function Product() {
     const handleClick = () => {
       dispatch(
         addProduct({...product, quantity, size})
-        
-        
+
+
         );
-  
+
     };
     return (
       <Container>
@@ -158,7 +158,7 @@ export default function Product() {
           <FilterContainer>
             <Filter>
               <FilterTitle>Size</FilterTitle>
-              <FilterSize>
+              <FilterSize onChange={(e) => setSize(e.target.value)}>
               {product.size && product.size.map((s) => (
                   <FilterSizeOption key={s}>{s}</FilterSizeOption>
                 ))}
