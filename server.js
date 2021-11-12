@@ -21,6 +21,9 @@ mongoose
     });
 
 
+    if(process.env.NODE_ENV === 'production') {
+        app.use(express.static('client/build'));
+    }
     app.use(cors());
     app.use(express.json());
     app.use("/api/auth", authRoutes);
