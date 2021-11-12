@@ -14,7 +14,7 @@ const cors = require("cors");
 dotenv.config();
 
 mongoose
-    .connect("mongodb+srv://brandon:Pokemon8252@cluster0.lrsm3.mongodb.net/shoeshop?retryWrites=true&w=majority")
+    .connect(process.env.MONGO_URL)
     .then(()=> console.log("db connection successful"))
     .catch((err) => {
         console.log(err);
