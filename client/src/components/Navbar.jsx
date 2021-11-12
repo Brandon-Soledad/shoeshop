@@ -1,12 +1,16 @@
 import { ShoppingCartOutlined } from '@material-ui/icons'
 import Search from '@mui/icons-material/Search'
 import { Badge } from '@mui/material';
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import sneakerLogo from './ShoeImages/sneakerLogo.jpeg';
 import { mobile } from "../mobileUI";
 import {useSelector} from "react-redux"
 import { Link } from 'react-router-dom';
+import { logout } from '../redux/apiCalls';
+import { useDispatch } from 'react-redux';
+import { Redirect } from 'react-router';
+import { useHistory } from "react-router";
 
 const Container = styled.div`
     height: 100px;
@@ -81,21 +85,38 @@ const MenuItem = styled.div`
 
 export default function Navbar() {
     const quantity = useSelector(state=>state.cart.quantity);
-
+    const [username, setUsername] = useState("");
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const handleClick = (e) => {
+        window.localStorage.clear();
+        window.location.href = "/login";
+        window.localStorage.clear();
+      };
+    const handleLog = (e) =>{
+        window.localStorage.clear();
+    }
     return (
         <Container>
             <Wrapper>
                 <Left>
-                    <Language>EN</Language>
+                    {/* <Language>EN</Language>
                     <SearchContainer>
                         <Input/>
                         <Search style={{color:"white", fontSize:17}}/>
-                    </SearchContainer>
+                    </SearchContainer> */}
                 </Left>
-                <Center><Logo src={sneakerLogo}/></Center>
+                <Center><Link to="/"><Logo src={sneakerLogo}/></Link></Center>
                 <Right>
+                    <Link to="/register">
                     <MenuItem>REGISTER</MenuItem>
+                    </Link>
+                    <Link to="/login">
                     <MenuItem>SIGN IN</MenuItem>
+                    </Link>
+                    <Link to="/login">
+                    <MenuItem onClick={handleClick} onHandle={handleLog}>SIGN OUT</MenuItem>
+                    </Link>
                     <Link to="/carts">
                     <MenuItem>
                         <Badge badgeContent = {quantity} color = "primary">

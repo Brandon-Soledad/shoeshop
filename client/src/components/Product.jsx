@@ -3,7 +3,6 @@ import React from 'react'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
-
 const Info = styled.div`
     opacity: 0;
     width: 100%;
@@ -69,11 +68,8 @@ export default function Product({item}) {
             <Image src={item.img}/>
             <Info>
                 <Icon>
-                    <ShoppingCartOutlined/>
-                </Icon>
-                <Icon>
                     <Link to={`/product/${item._id}`}>
-                    <SearchOutlined/>
+                    <ShoppingCartOutlined/>
                     </Link>
                 </Icon>
             </Info>

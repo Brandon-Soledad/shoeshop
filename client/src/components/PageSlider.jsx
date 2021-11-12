@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { useState } from 'react'
 import { sliderItems } from '../data'
 import { mobile } from "../mobileUI";
+import { Link } from 'react-router-dom'
 
 const Container = styled.div`
     width: 100%;
@@ -97,7 +98,7 @@ export default function PageSlider() {
                 <KeyboardArrowLeftOutlined/>
             </SliderArrow>
             <Wrapper slideIndex={slideIndex}>
-                {sliderItems.map((item) => ( 
+                {sliderItems.map((item) => (
                 <Slide bg={item.bg} key={item.id}>
                     <ImgContainer>
                         <Image src={item.img}/>
@@ -105,7 +106,7 @@ export default function PageSlider() {
                     <InfoContainer>
                         <Title>{item.title}</Title>
                         <Description>{item.desc}</Description>
-                        <Button>SHOW NOW</Button>
+                        {/* <Link to={`/products/${item.cat}`}><Button>SHOW NOW</Button></Link> */}
                     </InfoContainer>
                 </Slide>
                 ))}

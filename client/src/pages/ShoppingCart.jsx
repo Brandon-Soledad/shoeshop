@@ -10,7 +10,8 @@ import { useHistory } from "react-router";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout"
-
+import { addProduct, removeProduct } from '../redux/cartRedux';
+import { useDispatch } from 'react-redux';
 
 const Container = styled.div``;
 
@@ -101,6 +102,7 @@ const ProductAmountContainer = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    cursor: pointer;
 `;
 
 const ProductAmount = styled.div`
@@ -151,46 +153,55 @@ const Button = styled.button`
     background-color: red;
     color: white;
     font-weight: 600;
+    cursor: pointer;
 `;
 
 export default function ShoppingCart() {
     const cart = useSelector((state) => state.cart);
+    var quantity = useSelector(state=>state.cart.quantity);
+    const products = useSelector(state=>state.cart.products);
+    const total = useSelector(state=>state.cart.total);
     const [stripeToken, setStripeToken] = useState(null);
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const onToken = (token) => {
         setStripeToken(token);
-    };
+    }
 
     useEffect(() => {
         const makeRequest = async () => {
         try {
             const res = await userRequest.post("/checkout/payment", {
             tokenId: stripeToken.id,
-            amount: 500,
+            amount: cart.total * 100,
             });
             history.push("/success", {
             stripeData: res.data,
             products: cart, });
-        } catch {}
+        } catch (e) {}
         };
         stripeToken && makeRequest();
         // eslint-disable-next-line
     }, [stripeToken, cart.total, history]);
+    console.log(cart);
+    const handleClick = (type) => {
+       var priceTotal = cart.total;
+       if(type === "dec") {
+         dispatch(
+           removeProduct({...cart.product, quantity, priceTotal})
+         )
+       }
+    };
+    // cart.products.map((product)=>(
+    //   product.quantity -= 1
+    // ))
     return (
         <Container>
         <Navbar />
         <Announcement />
         <Wrapper>
           <Title>CART</Title>
-          <Top>
-            <TopButton>CONTINUE SHOPPING</TopButton>
-            <TopTexts>
-              <TopText>Shopping Bag(2)</TopText>
-              <TopText>Your Wishlist (0)</TopText>
-            </TopTexts>
-            <TopButton type="filled">CHECKOUT NOW</TopButton>
-          </Top>
           <Bottom>
             <Info>
               {cart.products.map((product) => (
@@ -211,12 +222,13 @@ export default function ShoppingCart() {
                   </ProductDetail>
                   <PriceDetail>
                     <ProductAmountContainer>
-                      <Add />
-                      <ProductAmount>{product.quantity}</ProductAmount>
-                      <Remove />
+                      <Button onClick={() => handleClick("dec")}>DELETE</Button>
+                      {/* <Remove onClick={() => handleClick("dec")} /> */}
+                      <ProductAmount></ProductAmount>
+                      {/* <Add onClick={() => handleClick("inc")} /> */}
                     </ProductAmountContainer>
                     <ProductPrice>
-                      $ {product.price * product.quantity}
+                      $ {product.price}
                     </ProductPrice>
                   </PriceDetail>
                 </Product>
@@ -235,7 +247,7 @@ export default function ShoppingCart() {
               </SummaryItem>
               <SummaryItem>
                 <SummaryItemText>Shipping Discount</SummaryItemText>
-                <SummaryItemPrice>$ -5.90</SummaryItemPrice>
+                <SummaryItemPrice>$ -3.00</SummaryItemPrice>
               </SummaryItem>
               <SummaryItem type="total">
                 <SummaryItemText>Total</SummaryItemText>

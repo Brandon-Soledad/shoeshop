@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 import { mobile } from "../mobileUI";
 import { useLocation } from 'react-router';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div``;
 
@@ -39,6 +40,13 @@ const Select = styled.select`
 `;
 const Option = styled.option``;
 
+const Links = styled.a`
+    color: black;
+    margin-right: 20px;
+    font-size: 25px;
+    text-align: center;
+    cursor: pointer;
+`;
 
 export default function ProductList() {
     const location = useLocation();
@@ -61,12 +69,6 @@ export default function ProductList() {
         <FilterContainer>
           <Filter>
             <FilterText>Filter Products:</FilterText>
-            <Select name="brand" onChange={handleFilters}>
-              <Option disabled > Brand</Option>
-              <Option>jordan</Option>
-              <Option>nike</Option>
-              <Option>adidas</Option>
-            </Select>
             <Select name="size" onChange={handleFilters}>
               <Option disabled>Size</Option>
               <Option>3</Option>
@@ -80,6 +82,11 @@ export default function ProductList() {
               <Option>11</Option>
               <Option>12</Option>
             </Select>
+           {/* <Select name="brand" onChange={handleFilters}> */}
+           <Link to="/products/jordan"><Links disabled >Jordan</Links></Link>
+           <Link to="/products/nike"><Links disabled >Nike</Links></Link>
+           <Link to="/products/adidas"><Links disabled >Adidas</Links></Link>
+           {/* </Select> */}
           </Filter>
           <Filter>
             <FilterText>Sort Products:</FilterText>

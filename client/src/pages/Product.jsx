@@ -13,6 +13,7 @@ import { addProduct } from '../redux/cartRedux';
 import { useDispatch } from 'react-redux';
 
 
+
 const Container = styled.div`
 `;
 
@@ -128,20 +129,22 @@ export default function Product() {
     }, [id]);
 
     const handleQuantity = (type) => {
-      if (type === "dec") {
-        quantity > 1 && setQuantity(quantity - 1);
-      } else {
+      if (type === "dec" && quantity >= 1) {
+        setQuantity(quantity - 1);
+      }
+      if (type === "inc" && quantity < 3) {
         setQuantity(quantity + 1);
       }
     };
 
     const handleClick = () => {
-      dispatch(
-        addProduct({...product, quantity, size})
-
-
-        );
-
+      var counter = 0;
+      while(quantity > counter ) {
+        dispatch(
+          addProduct({...product, quantity, size})
+          );
+        counter += 1;
+     }
     };
     return (
       <Container>

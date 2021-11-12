@@ -7,9 +7,10 @@ import Register from './pages/Register'
 import ShoppingCart from './pages/ShoppingCart'
 import Success from './pages/Success'
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function App() {
-  const user = false;
+  const user = useSelector((state) => state.user.currentUser);
   return (
     <Router>
       <Switch>

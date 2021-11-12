@@ -4,6 +4,7 @@ import { mobile } from "../mobileUI";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { login } from "../redux/apiCalls";
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
     width: 100vw;
@@ -60,9 +61,13 @@ const Button = styled.button`
     justify-items: center;
     align-items: center;
     margin-bottom: 10px;
+    &:disabled {
+      color: green;
+      cursor: not-allowed;
+  }
 `;
 
-const Link = styled.a`
+const Links = styled.a`
     color: white;
     margin: 5px 0px;
     font-size: 12px;
@@ -85,7 +90,7 @@ export default function Login() {
       e.preventDefault();
       login(dispatch, { username, password });
     };
-    console.log(username, password)
+    window.localStorage.clear();
     return (
       <Container>
       <Wrapper>
@@ -103,9 +108,7 @@ export default function Login() {
           <Button onClick={handleClick} disabled={isFetching}>
             LOGIN
           </Button>
-          {error && <Error>Something went wrong...</Error>}
-          <Link>FORGOT PASSWORD</Link>
-          <Link>CREATE ACCOUNT</Link>
+          <Link to="/register"><Links>CREATE ACCOUNT</Links></Link>
         </Form>
       </Wrapper>
     </Container>

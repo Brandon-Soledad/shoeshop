@@ -23,7 +23,6 @@ export default function Products({cat, filters, sort}) {
               ? `http://localhost:5000/api/products?category=${cat}`
               : "http://localhost:5000/api/products"
           );
-          console.log(res);
           setProducts(res.data);
         } catch (err) {}
       };
@@ -46,7 +45,7 @@ export default function Products({cat, filters, sort}) {
           setFilteredProducts((prev) =>
             [...prev].sort((a, b) => a.createdAt - b.createdAt)
           );
-        } else if (sort === "Price (Low to High)") {
+        } else if (sort === "lowtohigh") {
           setFilteredProducts((prev) =>
             [...prev].sort((a, b) => a.price - b.price)
           );
@@ -62,7 +61,7 @@ export default function Products({cat, filters, sort}) {
            {cat
         ? filteredProducts.map((item) => <Product item={item} key={item.id} />)
         : products
-            .slice(0, 8)
+            .slice(0, 6)
             .map((item) => <Product item={item} key={item.id} />)}
         </Container>
     )
