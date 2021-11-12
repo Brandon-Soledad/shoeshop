@@ -23,7 +23,7 @@ mongoose
 
 
     app.use(express.static('client/build'));
-    app.use(comppression())
+    app.use(comppression());
     app.use(cors());
     app.use(express.json());
     // app.use("/api/auth", authRoutes);
