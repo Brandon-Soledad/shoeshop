@@ -10,6 +10,7 @@ const orderRoute = require("./routes/order");
 const stripeRoute = require("./routes/stripe");
 const path = require("path");
 const cors = require("cors");
+const compression = require("compression");
 
 dotenv.config();
 
@@ -21,18 +22,18 @@ mongoose
     });
 
 
-    if(process.env.NODE_ENV === 'production') {
-        app.use(express.static('client/build'));
-    }
+    app.use(express.static('client/build'));
+    app.use(comppression())
     app.use(cors());
     app.use(express.json());
-    app.use("/api/auth", authRoutes);
-    app.use("/api/users", usersRoutes);
-    app.use("/api/products", productRoute);
-    app.use("/api/carts", cartRoute);
-    app.use("/api/orders", orderRoute);
-    app.use("/api/checkout", stripeRoute);
+    // app.use("/api/auth", authRoutes);
+    // app.use("/api/users", usersRoutes);
+    // app.use("/api/products", productRoute);
+    // app.use("/api/carts", cartRoute);
+    // app.use("/api/orders", orderRoute);
+    // app.use("/api/checkout", stripeRoute);
+    app.use(require("./routes"));
 
-app.listen(process.env.MONGODB_URI || 5000, () => {
+app.listen(process.env.PORT || 5000, () => {
     console.log("Backend server is running!");
 })
