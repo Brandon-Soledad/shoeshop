@@ -90,8 +90,7 @@ export default function Navbar() {
     const dispatch = useDispatch();
     const history = useHistory();
     const handleClick = (e) => {
-        window.location.href = "/login";
-
+       logout(dispatch, user);
       };
     return (
         <Container>
@@ -111,9 +110,9 @@ export default function Navbar() {
                     <Link to="/login">
                     <MenuItem>SIGN IN</MenuItem>
                     </Link>
-                    {/* <Link to="/login"> */}
+                    <Link to="/login">
                     <MenuItem onClick={handleClick}>SIGN OUT</MenuItem>
-                    {/* </Link> */}
+                    </Link>
                     <Link to="/carts">
                     <MenuItem>
                         <Badge badgeContent = {quantity} color = "primary">
