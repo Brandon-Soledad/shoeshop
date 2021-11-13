@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import { Redirect } from 'react-router';
 import { useHistory } from "react-router";
 
+
 const Container = styled.div`
     height: 100px;
     background-color: black;
@@ -85,13 +86,16 @@ const MenuItem = styled.div`
 
 export default function Navbar() {
     const quantity = useSelector(state=>state.cart.quantity);
+    const user = useSelector((state) => state.user.currentUser);
     const [username, setUsername] = useState("");
     const dispatch = useDispatch();
     const history = useHistory();
     const handleClick = (e) => {
-        window.localStorage.clear();
-        window.location.href = "/login";
-        window.localStorage.clear();
+       if(user !== null) {
+            window.localStorage.clear();
+            window.location.href = "/login";
+            window.localStorage.clear();
+      }
       };
     const handleLog = (e) =>{
         window.localStorage.clear();

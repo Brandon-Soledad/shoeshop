@@ -30,6 +30,7 @@ export default function App() {
           <Success />
         </Route>
         <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
+        <Route path="/home"><Home/></Route>
         <Route path="/register">
           {user ? <Redirect to="/" /> : <Register />}
         </Route>
