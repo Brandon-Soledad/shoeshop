@@ -7,7 +7,7 @@ import sneakerLogo from './ShoeImages/sneakerLogo.jpeg';
 import { mobile } from "../mobileUI";
 import {useSelector} from "react-redux"
 import { Link } from 'react-router-dom';
-import { logout } from '../redux/apiCalls';
+import { logout } from '../redux/userRedux';
 import { useDispatch } from 'react-redux';
 import { Redirect } from 'react-router';
 import { useHistory } from "react-router";
@@ -89,8 +89,10 @@ export default function Navbar(item) {
     const [username, setUsername] = useState("");
     const dispatch = useDispatch();
     const history = useHistory();
+    console.log(item);
     const handleClick = (e) => {
-       logout(dispatch,{ item});
+       window.localStorage.setItem("persist:root", null);
+       window.location.href = "https://sneaker-aid-shop.herokuapp.com/login";
       };
     return (
         <Container>
