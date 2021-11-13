@@ -12,7 +12,6 @@ import { useDispatch } from 'react-redux';
 import { Redirect } from 'react-router';
 import { useHistory } from "react-router";
 
-
 const Container = styled.div`
     height: 100px;
     background-color: black;
@@ -94,6 +93,8 @@ export default function Navbar() {
        if(user !== null) {
             window.location.href = "/login";
             window.localStorage.clear();
+      } else {
+          <Redirect to="/" />
       }
       };
     return (
@@ -114,9 +115,9 @@ export default function Navbar() {
                     <Link to="/login">
                     <MenuItem>SIGN IN</MenuItem>
                     </Link>
-                    <Link to="/login">
+                    {/* <Link to="/login"> */}
                     <MenuItem onClick={handleClick}>SIGN OUT</MenuItem>
-                    </Link>
+                    {/* </Link> */}
                     <Link to="/carts">
                     <MenuItem>
                         <Badge badgeContent = {quantity} color = "primary">
