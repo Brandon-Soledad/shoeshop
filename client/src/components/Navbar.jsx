@@ -91,8 +91,8 @@ export default function Navbar() {
     const history = useHistory();
     const handleClick = (e) => {
        if(user !== null) {
-            <Redirect to="/login"/>
             window.localStorage.clear();
+            window.location.href = "/login";
       } else {
           <Redirect to="/" />
       }
