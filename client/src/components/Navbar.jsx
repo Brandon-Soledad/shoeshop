@@ -90,12 +90,9 @@ export default function Navbar() {
     const dispatch = useDispatch();
     const history = useHistory();
     const handleClick = (e) => {
-       if(user !== null) {
-            localStorage.removeItem("user");
-            window.location.href = "/login";
-      } else {
-          <Redirect to="/" />
-      }
+        window.localStorage.clear();
+        window.location.href = "/login";
+
       };
     return (
         <Container>
