@@ -90,7 +90,6 @@ export default function Navbar() {
     const dispatch = useDispatch();
     const history = useHistory();
     const handleClick = (e) => {
-        window.localStorage.clear();
         window.location.href = "/login";
 
       };
