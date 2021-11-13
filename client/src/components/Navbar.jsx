@@ -90,7 +90,7 @@ export default function Navbar() {
     const dispatch = useDispatch();
     const history = useHistory();
     const handleClick = (e) => {
-       logout(dispatch, user);
+       logout(dispatch,{ user});
       };
     return (
         <Container>
