@@ -83,14 +83,14 @@ const MenuItem = styled.div`
     ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 
-export default function Navbar() {
+export default function Navbar(item) {
     const quantity = useSelector(state=>state.cart.quantity);
     const user = useSelector((state) => state.user.currentUser);
     const [username, setUsername] = useState("");
     const dispatch = useDispatch();
     const history = useHistory();
     const handleClick = (e) => {
-       logout(dispatch,{ username});
+       logout(dispatch,{ item});
       };
     return (
         <Container>

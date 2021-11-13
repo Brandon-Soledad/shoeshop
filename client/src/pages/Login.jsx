@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { login } from "../redux/apiCalls";
 import { Link } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 const Container = styled.div`
     width: 100vw;
@@ -110,6 +111,7 @@ export default function Login() {
           </Button>
           <Link to="/register"><Links>CREATE ACCOUNT</Links></Link>
         </Form>
+        {(item)=><Navbar item={username}/>}
       </Wrapper>
     </Container>
       )
