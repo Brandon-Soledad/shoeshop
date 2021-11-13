@@ -92,14 +92,10 @@ export default function Navbar() {
     const history = useHistory();
     const handleClick = (e) => {
        if(user !== null) {
-            window.localStorage.clear();
             window.location.href = "/login";
             window.localStorage.clear();
       }
       };
-    const handleLog = (e) =>{
-        window.localStorage.clear();
-    }
     return (
         <Container>
             <Wrapper>
@@ -119,7 +115,7 @@ export default function Navbar() {
                     <MenuItem>SIGN IN</MenuItem>
                     </Link>
                     <Link to="/login">
-                    <MenuItem onClick={handleClick} onHandle={handleLog}>SIGN OUT</MenuItem>
+                    <MenuItem onClick={handleClick}>SIGN OUT</MenuItem>
                     </Link>
                     <Link to="/carts">
                     <MenuItem>
