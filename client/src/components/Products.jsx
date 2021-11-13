@@ -20,8 +20,8 @@ export default function Products({cat, filters, sort}) {
         try {
           const res = await axios.get(
             cat
-              ? `http://localhost:5000/api/products?category=${cat}`
-              : "http://localhost:5000/api/products"
+              ? `https://sneaker-aid-shop.herokuapp.com/api/products?category=${cat}`
+              : "https://sneaker-aid-shop.herokuapp.com/api/products"
           );
           setProducts(res.data);
         } catch (err) {}
