@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import { logout } from '../redux/userRedux';
 import { useDispatch } from 'react-redux';
 import { Redirect } from 'react-router';
-import { useHistory } from "react-router";
+import {currentUser} from "../axiosRequests"
 
 const Container = styled.div`
     height: 100px;
@@ -86,12 +86,12 @@ const MenuItem = styled.div`
 export default function Navbar(item) {
     const quantity = useSelector(state=>state.cart.quantity);
     const user = useSelector((state) => state.user.currentUser);
-    const [username, setUsername] = useState("");
     const dispatch = useDispatch();
-    const history = useHistory();
-    console.log(item);
     const handleClick = (e) => {
-       window.localStorage.setItem("persist:root", null);
+       //window.localStorage.setItem("persist:root", null);
+       dispatch(
+           logout({currentUser})
+       )
       };
     return (
         <Container>
