@@ -92,7 +92,6 @@ export default function Navbar(item) {
     console.log(item);
     const handleClick = (e) => {
        window.localStorage.setItem("persist:root", null);
-       window.location.href = "https://sneaker-aid-shop.herokuapp.com/login";
       };
     return (
         <Container>
