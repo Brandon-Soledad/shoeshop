@@ -4,4 +4,4 @@ Sneaker E-Commerce application built using React, Node, Express, Redux, and Stri
 
 # View the site
 
-[here](https://sneaker-aid-shop.herokuapp.com/)
+[E-Commerce App](https://sneaker-aid-shop.herokuapp.com/)
