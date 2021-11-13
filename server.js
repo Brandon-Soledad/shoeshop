@@ -8,7 +8,6 @@ const productRoute = require("./routes/product");
 const cartRoute = require("./routes/cart");
 const orderRoute = require("./routes/order");
 const stripeRoute = require("./routes/stripe");
-const path = require("path");
 const cors = require("cors");
 
 dotenv.config();
@@ -24,13 +23,13 @@ mongoose
     app.use(express.static('client/build'));
     app.use(cors());
     app.use(express.json());
-    app.use(require("./routes"));
     app.use("/api/auth", authRoutes);
-    // app.use("/api/users", usersRoutes);
-    // app.use("/api/products", productRoute);
-    // app.use("/api/carts", cartRoute);
-    // app.use("/api/orders", orderRoute);
-    // app.use("/api/checkout", stripeRoute);
+    app.use("/api/users", usersRoutes);
+    app.use("/api/products", productRoute);
+    app.use("/api/carts", cartRoute);
+    app.use("/api/orders", orderRoute);
+    app.use("/api/checkout", stripeRoute);
+    app.use(require("./routes"));
 
 
 app.listen(process.env.PORT || 5000, () => {
